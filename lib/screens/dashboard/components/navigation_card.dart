@@ -65,7 +65,7 @@ class _NavigationBarCardState extends State<NavigationBarCard> {
                         const SizedBox(width: AppTheme.elementSpacing),
                         Text(
                           title,
-                          style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                 color: isTapped ? AppTheme.red : AppTheme.white,
                                 fontWeight: isTapped ? FontWeight.w700 : FontWeight.w500,
                               ),
@@ -110,7 +110,7 @@ class NavigationBarCardList extends StatelessWidget {
             leading: Icon(menu.icon, color: isTapped ? AppTheme.orange : AppTheme.white),
             title: Text(
               menu.title,
-              style: Theme.of(context).textTheme.subtitle1?.copyWith(
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     color: isTapped ? AppTheme.red : AppTheme.white,
                     fontWeight: isTapped ? FontWeight.w700 : FontWeight.w500,
                   ),

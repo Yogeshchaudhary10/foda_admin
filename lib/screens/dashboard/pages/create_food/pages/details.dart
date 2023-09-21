@@ -36,14 +36,14 @@ class FoodDetails extends StatelessWidget {
             dropdownColor: AppTheme.darkBlue,
             hint: Text(
               "Select Category",
-              style: Theme.of(context).textTheme.bodyText1?.copyWith(color: AppTheme.white.withOpacity(.6)),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppTheme.white.withOpacity(.6)),
             ),
             items: categories
                 .map((e) => DropdownMenuItem(
                       value: e,
                       child: Text(
                         e,
-                        style: Theme.of(context).textTheme.bodyText1?.copyWith(color: AppTheme.white),
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppTheme.white),
                       ),
                     ))
                 .toList(),

@@ -46,91 +46,91 @@ class AppTheme {
 
   //text theme
   static TextTheme textTheme = const TextTheme(
-    headline1: TextStyle(
+    displayLarge: TextStyle(
       fontFamily: 'ArimaMadurai',
       fontSize: 38.4,
       letterSpacing: -1.0,
       color: orange,
       fontWeight: FontWeight.w400,
     ),
-    headline2: TextStyle(
+    displayMedium: TextStyle(
       fontFamily: 'ArimaMadurai',
       fontSize: 27.2,
       letterSpacing: -0.25,
       color: white,
       fontWeight: FontWeight.w400,
     ),
-    headline3: TextStyle(
+    displaySmall: TextStyle(
       fontFamily: 'ArimaMadurai',
       fontSize: 21.2,
       letterSpacing: 0,
       color: white,
       fontWeight: FontWeight.w600,
     ),
-    headline4: TextStyle(
+    headlineMedium: TextStyle(
       fontFamily: 'ArimaMadurai',
       fontSize: 20.4,
       letterSpacing: 0,
       color: white,
       fontWeight: FontWeight.w400,
     ),
-    headline5: TextStyle(
+    headlineSmall: TextStyle(
       fontFamily: 'OpenSans',
       fontSize: 18.0,
       letterSpacing: 0,
       color: white,
       fontWeight: FontWeight.w600,
     ),
-    headline6: TextStyle(
+    titleLarge: TextStyle(
       fontFamily: 'OpenSans',
       fontSize: 17.0,
       letterSpacing: 0.25,
       color: white,
       fontWeight: FontWeight.w400,
     ),
-    subtitle1: TextStyle(
+    titleMedium: TextStyle(
       fontFamily: 'OpenSans',
       fontSize: 15.3,
       letterSpacing: 0.15,
       color: white,
       fontWeight: FontWeight.w500,
     ),
-    subtitle2: TextStyle(
+    titleSmall: TextStyle(
       fontFamily: 'OpenSans',
       fontSize: 11.3,
       letterSpacing: 0.1,
       color: white,
       fontWeight: FontWeight.w500,
     ),
-    bodyText1: TextStyle(
+    bodyLarge: TextStyle(
       fontFamily: 'OpenSans',
       fontSize: 13.6,
       letterSpacing: 0.5,
       color: white,
       fontWeight: FontWeight.w500,
     ),
-    bodyText2: TextStyle(
+    bodyMedium: TextStyle(
       fontFamily: 'OpenSans',
       fontSize: 11.9,
       letterSpacing: 0.25,
       color: white,
       fontWeight: FontWeight.w500,
     ),
-    caption: TextStyle(
+    bodySmall: TextStyle(
       fontFamily: 'OpenSans',
       fontSize: 10.8,
       letterSpacing: 0.4,
       color: white,
       fontWeight: FontWeight.w400,
     ),
-    button: TextStyle(
+    labelLarge: TextStyle(
       fontFamily: 'OpenSans',
       fontSize: 18.0,
       letterSpacing: 0.60,
       color: white,
       fontWeight: FontWeight.w500,
     ),
-    overline: TextStyle(
+    labelSmall: TextStyle(
       fontFamily: 'OpenSans',
       fontSize: 8.0,
       letterSpacing: 0.1,
@@ -140,30 +140,16 @@ class AppTheme {
   );
 
   static ThemeData theme = ThemeData(
-    backgroundColor: black,
     scaffoldBackgroundColor: black,
     primaryColor: red,
     appBarTheme: AppBarTheme(
-      titleTextStyle: textTheme.headline6?.copyWith(color: white, fontWeight: FontWeight.w700),
+      titleTextStyle: textTheme.titleLarge?.copyWith(color: white, fontWeight: FontWeight.w700),
       backgroundColor: darkBlue,
       centerTitle: false,
       elevation: 0.8,
     ),
     hintColor: white,
     indicatorColor: red,
-    colorScheme: const ColorScheme(
-      brightness: Brightness.light,
-      primary: darkBlue,
-      onPrimary: purpleDark,
-      secondary: darkBlue,
-      onSecondary: darkBlue,
-      error: red,
-      onError: red,
-      background: darkBlue,
-      onBackground: darkBlue,
-      surface: darkBlue,
-      onSurface: darkBlue,
-    ),
     radioTheme: RadioThemeData(
       fillColor: MaterialStateProperty.all(red),
       splashRadius: 24,
@@ -173,8 +159,8 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       fillColor: black,
       filled: true,
-      labelStyle: textTheme.subtitle1,
-      hintStyle: textTheme.bodyText1?.copyWith(
+      labelStyle: textTheme.titleMedium,
+      hintStyle: textTheme.bodyLarge?.copyWith(
         color: AppTheme.white.withOpacity(.6),
       ),
       contentPadding: const EdgeInsets.symmetric(horizontal: AppTheme.cardPadding),
@@ -198,6 +184,18 @@ class AppTheme {
     unselectedWidgetColor: white,
     textTheme: textTheme,
     primaryTextTheme: textTheme,
-    textSelectionTheme: const TextSelectionThemeData(cursorColor: red),
+    textSelectionTheme: const TextSelectionThemeData(cursorColor: red), colorScheme: const ColorScheme(
+      brightness: Brightness.light,
+      primary: darkBlue,
+      onPrimary: purpleDark,
+      secondary: darkBlue,
+      onSecondary: darkBlue,
+      error: red,
+      onError: red,
+      background: darkBlue,
+      onBackground: darkBlue,
+      surface: darkBlue,
+      onSurface: darkBlue,
+    ).copyWith(background: black),
   );
 }

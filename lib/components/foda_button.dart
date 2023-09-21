@@ -67,7 +67,7 @@ class _FodaButtonState extends State<FodaButton> {
                     widget.title,
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle1
+                        .titleMedium
                         ?.copyWith(color: disabled ? AppTheme.white.withOpacity(.6) : null),
                   ),
                 ],

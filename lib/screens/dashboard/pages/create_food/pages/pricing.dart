@@ -22,7 +22,7 @@ class Pricing extends StatelessWidget {
             children: [
               Expanded(
                 child: FodaTextfield(
-                  title: "Price(\$)",
+                  title: "Price",
                   controller: state.priceController,
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
@@ -31,16 +31,16 @@ class Pricing extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: AppTheme.cardPadding),
-              Expanded(
-                child: FodaTextfield(
-                  title: "Previous Price(\$)",
-                  controller: state.previousPriceController,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                    LengthLimitingTextInputFormatter(16),
-                  ],
-                ),
-              ),
+              // Expanded(
+              //   child: FodaTextfield(
+              //     title: "Previous Price(\$)",
+              //     controller: state.previousPriceController,
+              //     inputFormatters: [
+              //       FilteringTextInputFormatter.digitsOnly,
+              //       LengthLimitingTextInputFormatter(16),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
           const Spacer(),
@@ -59,7 +59,9 @@ class Pricing extends StatelessWidget {
               ),
               FodaButton(
                 title: "Next",
-                state: state.pricingPageIsValid ? ButtonState.idle : ButtonState.disabled,
+                state: state.pricingPageIsValid
+                    ? ButtonState.idle
+                    : ButtonState.disabled,
                 onTap: () {
                   state.moveToNexPage();
                 },

@@ -57,7 +57,7 @@ class DashboardDrawer extends StatelessWidget {
               onTap: state.logOut,
               child: Text(
                 'Logout',
-                style: Theme.of(context).textTheme.button?.copyWith(color: AppTheme.white, fontWeight: FontWeight.w800),
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(color: AppTheme.white, fontWeight: FontWeight.w800),
               ),
             ),
             const SizedBox(height: AppTheme.elementSpacing),

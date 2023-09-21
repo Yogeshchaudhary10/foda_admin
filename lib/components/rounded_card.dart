@@ -53,7 +53,7 @@ class RoundedCard extends StatelessWidget {
         if (title != null)
           Text(
             title!,
-            style: Theme.of(context).textTheme.headline6?.copyWith(color: AppTheme.black, fontWeight: FontWeight.w600),
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(color: AppTheme.black, fontWeight: FontWeight.w600),
           ),
         if (title != null) const SizedBox(height: AppTheme.elementSpacing),
         Container(

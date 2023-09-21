@@ -2,17 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foda_admin/components/base_state.dart';
 import 'package:foda_admin/constant/route_name.dart';
-import 'package:foda_admin/models/user.dart';
 import 'package:foda_admin/repositories/user_repository.dart';
 import 'package:foda_admin/services/get_it.dart';
 import 'package:foda_admin/services/navigation_service.dart';
 
 class AuthenticationState extends BaseState {
-  final userRepository = locate<UserRepository>();
-  final navigationService = locate<NavigationService>();
+  final UserRepository userRepository = locate<UserRepository>();
+  final NavigationService navigationService = locate<NavigationService>();
 
-  late TextEditingController emailController;
-  late TextEditingController passwordController;
+  late final TextEditingController emailController;
+  late final TextEditingController passwordController;
 
   AuthenticationState() {
     emailController = TextEditingController();
@@ -22,7 +21,9 @@ class AuthenticationState extends BaseState {
     passwordController.addListener(notifier);
   }
 
-  bool get emailIsValid => emailController.text.trim().isNotEmpty && emailController.text.trim().contains("@");
+  bool get emailIsValid =>
+      emailController.text.trim().isNotEmpty &&
+      emailController.text.trim().contains("@");
 
   @override
   void dispose() {
@@ -35,24 +36,30 @@ class AuthenticationState extends BaseState {
     notifyListeners();
   }
 
-  void login() async {
-    if (isLoading == false) {
+  Future<void> login() async {
+    if (!isLoading) {
       setLoading(true);
-      final login = await userRepository.login(emailController.text.trim(), passwordController.text.trim());
-      if (login.isRight) {
+
+      final enteredEmail = emailController.text.trim();
+      final enteredPassword = passwordController.text.trim();
+
+      // Check if the entered credentials match the predefined user credentials
+      if (enteredEmail == 'admin101@gmail.com' && enteredPassword == '123456') {
+        // Successful login
         emailController.clear();
         passwordController.clear();
-
         navigatePushReplaceName(overview);
       } else {
+        // Invalid credentials
         showDialog(
           context: navigationService.navigatorKey.currentContext!,
-          builder: (_) => CupertinoAlertDialog(
-            title: const Text("An error occurred"),
-            content: Text(login.left.message),
+          builder: (_) => const CupertinoAlertDialog(
+            title: Text("Invalid Credentials"),
+            content: Text("Please enter valid credentials."),
           ),
         );
       }
+
       setLoading(false);
     }
   }

@@ -52,7 +52,7 @@ class NavigationService {
       case customerPath:
         return navigateToPageRoute(settings, const CustomersPage());
       case ordersPath:
-        return navigateToPageRoute(settings, const OrdersPage());
+        return navigateToPageRoute(settings, OrderPage());
       case foodsPath:
         return navigateToPageRoute(settings, const FoodsPage());
       case feedbackPath:
@@ -75,7 +75,8 @@ class NavigationService {
       maintainState: maintainState,
       fullscreenDialog: fullscreenDialog,
       settings: settings,
-      transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+      transitionsBuilder: (c, anim, a2, child) =>
+          FadeTransition(opacity: anim, child: child),
       transitionDuration: const Duration(milliseconds: 200),
     );
   }
@@ -97,8 +98,9 @@ class RouteObservers extends RouteObserver<PageRoute<dynamic>> {
         String routePath = routeList?[0] ?? authPath;
         navigationService.routeNotifier.value = routePath;
 
-        final containPreviousRoutePath =
-            navigationService.pathToCloseNavigationBar.contains(previousRoute.settings.name);
+        final containPreviousRoutePath = navigationService
+            .pathToCloseNavigationBar
+            .contains(previousRoute.settings.name);
 
         if (containPreviousRoutePath) {
           navigationService.setNavigationBar = false;

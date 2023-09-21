@@ -40,14 +40,19 @@ class Summery extends StatelessWidget {
                 width: 150,
                 decoration: BoxDecoration(
                   color: Colors.black,
-                  image:
-                      state.imageUnit8List != null ? DecorationImage(image: MemoryImage(state.imageUnit8List!)) : null,
+                  image: state.imageUnit8List != null
+                      ? DecorationImage(
+                          image: MemoryImage(state.imageUnit8List!))
+                      : null,
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
               const SizedBox(width: AppTheme.cardPadding),
               Expanded(
-                child: SummeryTextCard(title: "Descripiton", maxLine: 6, text: state.descriptionController.text),
+                child: SummeryTextCard(
+                    title: "Descripiton",
+                    maxLine: 6,
+                    text: state.descriptionController.text),
               ),
             ],
           ),
@@ -56,13 +61,9 @@ class Summery extends StatelessWidget {
             children: [
               SummeryTextCard(
                 title: "Price",
-                text: "\$ ${state.priceController.text}",
+                text: "\u20B9 ${state.priceController.text}",
               ),
               const SizedBox(width: AppTheme.cardPadding),
-              SummeryTextCard(
-                title: "Previous Price",
-                text: "\$ ${state.previousPriceController.text}",
-              ),
             ],
           ),
           const Spacer(),
@@ -77,11 +78,11 @@ class Summery extends StatelessWidget {
               const SizedBox(width: AppTheme.elementSpacing),
               Text(
                 "Set Live",
-                style: Theme.of(context).textTheme.subtitle1,
+                style: Theme.of(context).textTheme.titleMedium,
               )
             ],
           ),
-          const SizedBox(height: AppTheme.cardPadding),
+          // const SizedBox(height: AppTheme.cardPadding),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -126,7 +127,7 @@ class SummeryTextCard extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.bodyText2,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         const SizedBox(height: AppTheme.elementSpacing * 0.25),
         Container(
@@ -138,7 +139,7 @@ class SummeryTextCard extends StatelessWidget {
           child: SelectableText(
             text,
             maxLines: maxLine,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
       ],

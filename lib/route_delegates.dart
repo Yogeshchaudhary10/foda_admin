@@ -1,10 +1,12 @@
-import 'package:flutter/material.dart';
+import 'dart:html' as html;
+
+import 'package:flutter/cupertino.dart';
 import 'package:foda_admin/repositories/user_repository.dart';
 import 'package:foda_admin/screens/dashboard/dashboard_view.dart';
-import 'package:foda_admin/services/get_it.dart';
 import 'package:foda_admin/services/navigation_service.dart';
 
 import 'constant/route_name.dart';
+import 'services/get_it.dart';
 
 class UrlHandlerRouterDelegate extends RouterDelegate<String> {
   final userRepository = locate<UserRepository>();
@@ -16,7 +18,7 @@ class UrlHandlerRouterDelegate extends RouterDelegate<String> {
   }
 
   @override
-  void addListener(VoidCallback listener) {}
+  void addListener(html.VoidCallback listener) {}
 
   @override
   Future<bool> popRoute() async {
@@ -24,7 +26,7 @@ class UrlHandlerRouterDelegate extends RouterDelegate<String> {
   }
 
   @override
-  void removeListener(VoidCallback listener) {}
+  void removeListener(html.VoidCallback listener) {}
 
   @override
   Future<void> setNewRoutePath(configuration) async {
@@ -46,7 +48,8 @@ class UrlHandlerRouterDelegate extends RouterDelegate<String> {
 
 class UrlHandlerInformationParser extends RouteInformationParser<String> {
   @override
-  Future<String> parseRouteInformation(RouteInformation routeInformation) async {
+  Future<String> parseRouteInformation(
+      RouteInformation routeInformation) async {
     return "${routeInformation.location}";
   }
 }

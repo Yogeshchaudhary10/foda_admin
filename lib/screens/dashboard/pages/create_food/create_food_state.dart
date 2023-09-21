@@ -27,7 +27,6 @@ class CreateFoodState extends BaseState {
   late TextEditingController titleController;
   late TextEditingController descriptionController;
   late TextEditingController priceController;
-  late TextEditingController previousPriceController;
 
   Uint8List? imageUnit8List;
   bool isLive = true;
@@ -37,11 +36,9 @@ class CreateFoodState extends BaseState {
     titleController = TextEditingController();
     descriptionController = TextEditingController();
     priceController = TextEditingController();
-    previousPriceController = TextEditingController();
 
     titleController.addListener(notifier);
     descriptionController.addListener(notifier);
-    previousPriceController.addListener(notifier);
     descriptionController.addListener(notifier);
   }
 
@@ -49,7 +46,6 @@ class CreateFoodState extends BaseState {
   void dispose() {
     titleController.removeListener(notifier);
     descriptionController.removeListener(notifier);
-    previousPriceController.removeListener(notifier);
     descriptionController.removeListener(notifier);
     super.dispose();
   }
@@ -60,8 +56,8 @@ class CreateFoodState extends BaseState {
       seletedCategory != null &&
       seletedCategory!.isNotEmpty;
 
-  bool get pricingPageIsValid =>
-      priceController.text.trim().isNotEmpty && previousPriceController.text.trim().isNotEmpty;
+  bool get pricingPageIsValid => priceController.text.trim().isNotEmpty;
+  // previousPriceController.text.trim().isNotEmpty;
 
   void notifier() {
     notifyListeners();
@@ -85,7 +81,8 @@ class CreateFoodState extends BaseState {
   }
 
   void animateToPage(int page) {
-    pageController.animateToPage(page, duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
+    pageController.animateToPage(page,
+        duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
   }
 
   void onChangePage(int value) {
@@ -108,9 +105,10 @@ class CreateFoodState extends BaseState {
       final id = randomAlphaNumeric(8);
       if (imageUnit8List == null) return;
 
-      String imageUrl = await imagePickerService.uploadImageToDefaultBucket(imageUnit8List!, "food_$id");
+      String imageUrl = await imagePickerService.uploadImageToDefaultBucket(
+          imageUnit8List!, "food_$id");
 
-      final food = Food(
+      final food = FoodModel(
         id: id,
         title: titleController.text.trim(),
         imageUrl: imageUrl,
@@ -120,13 +118,12 @@ class CreateFoodState extends BaseState {
         createdAt: timeNow(),
         updatedAt: timeNow(),
         isLive: isLive,
-        ingridients: const [],
-        previousPrice: int.tryParse(previousPriceController.text) ?? 0,
         createdBy: {
           "uid": userRepository.currentUserUID,
           "name": userRepository.currentUserNotifier.value?.name,
           "email": userRepository.currentUserNotifier.value?.email,
         },
+        ingredients: const [],
       );
 
       final addFood = await foodRepository.addFood(food);

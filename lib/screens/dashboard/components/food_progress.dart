@@ -7,7 +7,7 @@ import '../../../themes/app_theme.dart';
 List<Menu> tabs = const [
   Menu(title: 'Details', icon: Icons.folder_copy),
   Menu(icon: Icons.photo_camera_rounded, title: 'Branding'),
-  Menu(icon: Icons.monetization_on, title: 'Pricing'),
+  Menu(icon: Icons.currency_rupee, title: 'Pricing'),
   Menu(icon: Icons.summarize_outlined, title: 'Summery'),
 ];
 
@@ -48,22 +48,31 @@ class CreateFoodProgress extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 35,
-                          backgroundColor: hightlight <= count ? AppTheme.red : AppTheme.black,
+                          backgroundColor: hightlight <= count
+                              ? AppTheme.red
+                              : AppTheme.black,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Icon(
                               tabs[index].icon,
                               size: 50,
-                              color: hightlight <= count ? AppTheme.white : AppTheme.blackLight,
+                              color: hightlight <= count
+                                  ? AppTheme.white
+                                  : AppTheme.blackLight,
                             ),
                           ),
                         ),
                         const SizedBox(height: AppTheme.elementSpacing),
                         Text(
                           tabs[index].title,
-                          style: Theme.of(context).textTheme.subtitle2?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: hightlight <= count ? AppTheme.white : AppTheme.white.withOpacity(.5)),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleSmall
+                              ?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: hightlight <= count
+                                      ? AppTheme.white
+                                      : AppTheme.white.withOpacity(.5)),
                         )
                       ],
                     ),

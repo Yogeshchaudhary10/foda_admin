@@ -7,5 +7,4 @@ List<String> categories = const [
   "French Fries",
   "Desserts",
   "Mixed Foods",
-  "Nigerian Pot"
 ];

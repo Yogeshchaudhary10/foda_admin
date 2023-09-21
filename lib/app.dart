@@ -18,7 +18,7 @@ class FodaAdmin extends StatelessWidget {
       ],
       child: MaterialApp.router(
         theme: AppTheme.theme,
-        title: 'Foda Admin',
+        title: 'Fooda Admin',
         shortcuts: {
           LogicalKeySet(LogicalKeyboardKey.space): const ActivateIntent(),
         },

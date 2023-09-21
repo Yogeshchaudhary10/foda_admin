@@ -8,8 +8,21 @@ import 'package:foda_admin/screens/authentication/authentication_state.dart';
 import 'package:foda_admin/themes/app_theme.dart';
 import 'package:provider/provider.dart';
 
-class AuthenticationView extends StatelessWidget {
+class AuthenticationView extends StatefulWidget {
   const AuthenticationView({Key? key}) : super(key: key);
+
+  @override
+  _AuthenticationViewState createState() => _AuthenticationViewState();
+}
+
+class _AuthenticationViewState extends State<AuthenticationView> {
+  late bool _isObscure;
+
+  @override
+  void initState() {
+    super.initState();
+    _isObscure = true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +44,7 @@ class AuthenticationView extends StatelessWidget {
                     children: [
                       Text(
                         "Login",
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const SizedBox(height: AppTheme.cardPadding),
                       FodaTextfield(
@@ -42,8 +55,24 @@ class AuthenticationView extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: AppTheme.elementSpacing),
-                      FodaTextfield(
-                        title: "Password",
+                      TextField(
+                        obscureText: _isObscure,
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _isObscure
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _isObscure = !_isObscure;
+                              });
+                            },
+                          ),
+                        ),
                         controller: state.passwordController,
                         autofillHints: const [
                           AutofillHints.password,
@@ -54,7 +83,9 @@ class AuthenticationView extends StatelessWidget {
                         title: "Login to your account",
                         state: state.isLoading
                             ? ButtonState.loading
-                            : (state.emailIsValid ? ButtonState.idle : ButtonState.disabled),
+                            : (state.emailIsValid
+                                ? ButtonState.idle
+                                : ButtonState.disabled),
                         onTap: state.login,
                       ),
                       const SizedBox(height: AppTheme.cardPadding),
