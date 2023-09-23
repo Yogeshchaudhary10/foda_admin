@@ -123,8 +123,8 @@ class _FoodsPageState extends State<FoodsPage> {
                       print('Image URL for ${food.imageUrl}: ${snapshot.data}');
                       return Image.network(
                         snapshot.data!,
-                        height: 100,
-                        width: 100,
+                        height: 200,
+                        width: 50,
                         fit: BoxFit.cover,
                       );
                     },

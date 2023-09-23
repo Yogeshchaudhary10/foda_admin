@@ -32,7 +32,7 @@ class _AuthenticationViewState extends State<AuthenticationView> {
         padding: const EdgeInsets.all(AppTheme.cardPadding),
         child: Column(
           children: [
-            Image.asset(ImagePath.logo, width: 120),
+            // Image.asset(ImagePath.logo, width: 120),
             const SizedBox(height: AppTheme.cardPadding * 2),
             SizedBox(
               width: 500,
